@@ -17,8 +17,13 @@ main:
   - title: "Teaching"
     url: /teaching/    
     
-  - title: "Portfolio"
+  - title: "Projects"
     url: /portfolio/
+    children:
+      - title: "Portfolio item number 1"
+        url: /portfolio/portfolio-1/
+      - title: "Portfolio item number 2"
+        url: /portfolio/portfolio-2/
         
   - title: "Blog Posts"
     url: /year-archive/
