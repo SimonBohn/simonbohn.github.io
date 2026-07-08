@@ -205,7 +205,7 @@
   .visible-links {
     display: table;
 
-    li {
+    > li {
       display: table-cell;
       vertical-align: middle;
 
@@ -234,7 +234,7 @@
       }
     }
 
-    a {
+    > li > a {
       position: relative;
 
       &:before {
@@ -276,11 +276,13 @@
       }
     }
 
-    &:hover,
-    &:focus-within {
-      > .masthead__submenu {
-        display: block;
-      }
+    > .masthead__submenu {
+      display: none;
+    }
+
+    &:hover > .masthead__submenu,
+    &:focus-within > .masthead__submenu {
+      display: block;
     }
   }
 
