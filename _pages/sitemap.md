@@ -7,31 +7,31 @@ author_profile: true
 
 {% include base_path %}
 
-A list of all the posts and pages found on the site. For you robots out there, there is an [XML version]({{ base_path }}/sitemap.xml) available for digesting as well.
+This sitemap lists the main public sections of the site. An [XML version]({{ base_path }}/sitemap.xml) is also available.
 
 <h2>Pages</h2>
-{% for post in site.pages %}
-  {% include archive-single.html %}
-{% endfor %}
-
-<h2>Posts</h2>
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% capture written_label %}'None'{% endcapture %}
-
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
-  {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
-{% endfor %}
-{% endfor %}
+<ul>
+  <li><a href="{{ base_path }}/">Home</a></li>
+  {% for link in site.data.navigation.main %}
+    {% if link.url contains 'http' %}
+      {% assign domain = '' %}
+    {% else %}
+      {% assign domain = base_path %}
+    {% endif %}
+    <li>
+      <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+      {% if link.children %}
+        <ul>
+          {% for child in link.children %}
+            {% if child.url contains 'http' %}
+              {% assign child_domain = '' %}
+            {% else %}
+              {% assign child_domain = base_path %}
+            {% endif %}
+            <li><a href="{{ child_domain }}{{ child.url }}">{{ child.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
