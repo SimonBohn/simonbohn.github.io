@@ -9,9 +9,10 @@ redirect_from:
 
 {% include base_path %}
 
-{% include cv-template.html %}
+<p>
+  <a class="btn" href="{{ base_path }}/SimonBohnCV.pdf">Download CV</a>
+</p>
 
-<div class="cv-download-links">
-  <a href="{{ base_path }}/files/cv.pdf" class="btn btn--primary">Download CV as PDF</a>
-  <a href="{{ base_path }}" class="btn btn--inverse">View Markdown CV</a>
-</div>
+<object data="{{ base_path }}/SimonBohnCV.pdf#view=Fit&navpanes=0" type="application/pdf" width="100%" height="900">
+  <p>Your browser cannot display the PDF inline. <a href="{{ base_path }}/SimonBohnCV.pdf">Download the CV</a>.</p>
+</object>
